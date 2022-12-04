@@ -15,10 +15,11 @@ int main(void)
     g1.Connect_vertices("Vicky", "Tom");
     g1.Connect_vertices("Bill", "Tom");
     
-    g1.print();
+    cout << g1 << endl;
+    
     g1.Connect_vertices("Vicky", "Bill");
     
-    g1.print();
+    cout << g1 << endl;
 
     return 0;
 }

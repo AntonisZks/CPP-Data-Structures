@@ -70,21 +70,6 @@ void Unweighted::Undirected::Graph<type>::Add_vertex(type data)
 }
 
 template <typename type>
-void Unweighted::Undirected::Graph<type>::print() const
-{
-    Singly::Node<Unweighted::Vertex<type>> *current_node = this->vertices.Get_first_node();
-    Singly::Node<type> *cur_node;
-
-    while (current_node != NULL)
-    {
-        cout << current_node->get_data() << ": ";
-        cout << current_node->get_data().get_neighbors();
-        cout << endl;
-        current_node = current_node->get_next();
-    }
-}
-
-template <typename type>
 void Unweighted::Undirected::Graph<type>::Connect_vertices(type data1, type data2)
 {
     if (this->Are_connected(data1, data2))
@@ -126,4 +111,35 @@ bool Unweighted::Undirected::Graph<type>::Are_connected(type data1, type data2)
         current_node = current_node->get_next();
     }
     return false;
+}
+
+template <typename type>
+void Unweighted::Undirected::Graph<type>::print() const
+{
+    Singly::Node<Unweighted::Vertex<type>> *current_node = this->vertices.Get_first_node();
+    Singly::Node<type> *cur_node;
+
+    while (current_node != NULL)
+    {
+        cout << current_node->get_data() << ": ";
+        cout << current_node->get_data().get_neighbors();
+        cout << endl;
+        current_node = current_node->get_next();
+    }
+}
+
+template <typename type>
+ostream &operator<<(ostream &out, const Unweighted::Undirected::Graph<type> graph)
+{
+    Singly::Node<Unweighted::Vertex<type>> *current_node = graph.Get_vertices().Get_first_node();
+    Singly::Node<type> *cur_node;
+
+    while (current_node != NULL)
+    {
+        out << current_node->get_data() << ": ";
+        out << current_node->get_data().get_neighbors();
+        out << endl;
+        current_node = current_node->get_next();
+    }
+    return out;
 }
