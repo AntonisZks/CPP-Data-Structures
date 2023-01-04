@@ -3,37 +3,37 @@
 using namespace std;
 
 /* SINGLY LINKED LIST NODE METHODS */
-template <typename type>
-void Singly::Node<type>::set_data(type &data)
+template <typename ltype>
+void Singly::Node<ltype>::set_data(ltype &data)
 {
     // Setting the data
     this->data = data;
 }
 
-template <typename type>
-void Singly::Node<type>::set_next(Singly::Node<type> *const next_node)
+template <typename ltype>
+void Singly::Node<ltype>::set_next(Singly::Node<ltype> *const next_node)
 {
     // Setting the next node
     this->next = next_node;
 }
 
-template <typename type>
-void Singly::Node<type>::set(type &data, Singly::Node<type> *const next_node)
+template <typename ltype>
+void Singly::Node<ltype>::set(ltype &data, Singly::Node<ltype> *const next_node)
 {
     // Creating the node
     this->set_data(data);
     this->set_next(next_node);
 }
 
-template <typename type>
-type &Singly::Node<type>::get_data()
+template <typename ltype>
+ltype &Singly::Node<ltype>::get_data()
 {
     // Returning the current data of the node
     return this->data;
 }
 
-template <typename type>
-Singly::Node<type> *Singly::Node<type>::get_next()
+template <typename ltype>
+Singly::Node<ltype> *Singly::Node<ltype>::get_next()
 {
     // Returning the current next node or NULL if there is no next node
     if (this->next == NULL)
@@ -49,29 +49,29 @@ ostream &operator<<(ostream &left, const Singly::Node<item> &right)
 }
 
 /* DOUBLY LINKED LIST NODE METHODS */
-template <typename type>
-void Doubly::Node<type>::set_data(type &data)
+template <typename ltype>
+void Doubly::Node<ltype>::set_data(ltype &data)
 {
     // Setting the data
     this->data = data;
 }
 
-template <typename type>
-void Doubly::Node<type>::set_next(Doubly::Node<type> *const next_node)
+template <typename ltype>
+void Doubly::Node<ltype>::set_next(Doubly::Node<ltype> *const next_node)
 {
     // Setting the next node
     this->next = next_node;
 }
 
-template <typename type>
-void Doubly::Node<type>::set_prev(Doubly::Node<type> *const prev_node)
+template <typename ltype>
+void Doubly::Node<ltype>::set_prev(Doubly::Node<ltype> *const prev_node)
 {
     // Setting the previous node
     this->prev = prev_node;
 }
 
-template <typename type>
-void Doubly::Node<type>::set(type &data, Doubly::Node<type> *const prev_node, Doubly::Node<type> *const next_node)
+template <typename ltype>
+void Doubly::Node<ltype>::set(ltype &data, Doubly::Node<ltype> *const prev_node, Doubly::Node<ltype> *const next_node)
 {
     // Creating the node
     this->set_data(data);
@@ -79,15 +79,15 @@ void Doubly::Node<type>::set(type &data, Doubly::Node<type> *const prev_node, Do
     this->set_prev(prev_node);
 }
 
-template <typename type>
-type &Doubly::Node<type>::get_data()
+template <typename ltype>
+ltype &Doubly::Node<ltype>::get_data()
 {
     // Returning the current data of the node
     return this->data;
 }
 
-template <typename type>
-Doubly::Node<type> *Doubly::Node<type>::get_next()
+template <typename ltype>
+Doubly::Node<ltype> *Doubly::Node<ltype>::get_next()
 {
     // Returning the current next node or NULL if there is no next node
     if (this->next == NULL)
@@ -95,8 +95,8 @@ Doubly::Node<type> *Doubly::Node<type>::get_next()
     return this->next;
 }
 
-template <typename type>
-Doubly::Node<type> *Doubly::Node<type>::get_prev()
+template <typename ltype>
+Doubly::Node<ltype> *Doubly::Node<ltype>::get_prev()
 {
     // Returning the current previous node or NULL if there is no previous node
     if (this->prev == NULL)
@@ -112,8 +112,8 @@ ostream &operator<<(ostream &left, const Doubly::Node<item> &right)
 }
 
 /* SINGLY LINKED LIST METHODS */
-template <typename type>
-Singly::LinkedList<type>::LinkedList()
+template <typename ltype>
+Singly::LinkedList<ltype>::LinkedList()
 {
     // Initializing the linked list
     this->head = NULL;
@@ -121,11 +121,11 @@ Singly::LinkedList<type>::LinkedList()
     // cout << "Singly Linked List Constructed with " << this->size << " elements." << endl;
 }
 
-template <typename type>
-Singly::LinkedList<type>::LinkedList(const Singly::LinkedList<type> &other)
+template <typename ltype>
+Singly::LinkedList<ltype>::LinkedList(const Singly::LinkedList<ltype> &other)
 {
     // Initializing a current node as the first node of the other list
-    Singly::Node<type> *current_node = other.Get_first_node();
+    Singly::Node<ltype> *current_node = other.Get_first_node();
 
     this->head = NULL; // Setting the head point to NULL
     while (current_node != NULL)
@@ -135,11 +135,11 @@ Singly::LinkedList<type>::LinkedList(const Singly::LinkedList<type> &other)
     }
 }
 
-template <typename type>
-Singly::LinkedList<type>::~LinkedList()
+template <typename ltype>
+Singly::LinkedList<ltype>::~LinkedList()
 {
     // Initializing a current node
-    Singly::Node<type> *current_node;
+    Singly::Node<ltype> *current_node;
 
     // Deleting every node in the linked list
     while (this->head != NULL)
@@ -170,12 +170,12 @@ ostream &operator<<(ostream &left, const Singly::LinkedList<item> &right)
     return left;
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Insert_at_start(type data)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Insert_at_start(ltype data)
 {
 
     // Initializing a new node
-    Singly::Node<type> *new_node = new Singly::Node<type>;
+    Singly::Node<ltype> *new_node = new Singly::Node<ltype>;
 
     // Checking if memory allocation worked successfully
     if (!new_node)
@@ -195,11 +195,11 @@ void Singly::LinkedList<type>::Insert_at_start(type data)
     this->size++; // Updating the size
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Insert_at_end(type data)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Insert_at_end(ltype data)
 {
     // Initializing a new node and a current node
-    Singly::Node<type> *new_node = new Singly::Node<type>, *current_node = this->head;
+    Singly::Node<ltype> *new_node = new Singly::Node<ltype>, *current_node = this->head;
 
     // Checking if memory allocation worked successfully
     if (!new_node)
@@ -223,11 +223,11 @@ void Singly::LinkedList<type>::Insert_at_end(type data)
     this->size++; // Updating the size
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Insert_at_position(type data, const int position)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Insert_at_position(ltype data, const unsigned int position)
 {
     // Initializing a new node and a current node
-    Singly::Node<type> *new_node = new Singly::Node<type>, *current_node = this->head;
+    Singly::Node<ltype> *new_node = new Singly::Node<ltype>, *current_node = this->head;
 
     // Checking if memory allocation worked successfully
     new_node->set(data, NULL);
@@ -244,7 +244,7 @@ void Singly::LinkedList<type>::Insert_at_position(type data, const int position)
         this->Insert_at_end(data); // Inserting at the end
 
     // Accessing the given position of the list
-    for (int i = 0; i < position - 1; i++)
+    for (unsigned int i = 0; i < position - 1; i++)
         current_node = current_node->get_next();
 
     new_node->set_next(current_node->get_next()); // Setting the new node point to the next node
@@ -252,8 +252,8 @@ void Singly::LinkedList<type>::Insert_at_position(type data, const int position)
     this->size++;                                 // Updating the size
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Insert(type data, const int index)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Insert(ltype data, const unsigned int index)
 {
     switch (index)
     {
@@ -269,11 +269,11 @@ void Singly::LinkedList<type>::Insert(type data, const int index)
     }
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Delete_start()
+template <typename ltype>
+void Singly::LinkedList<ltype>::Delete_start()
 {
     // Initializing a current node
-    Singly::Node<type> *current_node = this->head; // The current node is the first node of the list
+    Singly::Node<ltype> *current_node = this->head; // The current node is the first node of the list
 
     // Checking if the list is empty
     if (this->head == NULL)
@@ -285,11 +285,11 @@ void Singly::LinkedList<type>::Delete_start()
     this->size--;                        // Updating the size
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Delete_end()
+template <typename ltype>
+void Singly::LinkedList<ltype>::Delete_end()
 {
     // initializing a current node and a previous node
-    Singly::Node<type> *current_node, *previous_node;
+    Singly::Node<ltype> *current_node, *previous_node;
 
     // Checking if the list is empty
     if (this->head == NULL)
@@ -324,11 +324,11 @@ void Singly::LinkedList<type>::Delete_end()
     this->size--; // Updating the size
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Delete_position(const int position)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Delete_position(const unsigned int position)
 {
     // initializing a current node and a previous node
-    Singly::Node<type> *current_node = this->head, *previous_node;
+    Singly::Node<ltype> *current_node = this->head, *previous_node;
 
     // Checking if the list is empty
     if (this->head == NULL)
@@ -348,7 +348,7 @@ void Singly::LinkedList<type>::Delete_position(const int position)
         this->Delete_end(); // Delete the end
     else
     {
-        for (int i = 0; i < position; i++)
+        for (unsigned int i = 0; i < position; i++)
         {
             previous_node = current_node;            // Setting the previous node be the current node
             current_node = current_node->get_next(); // Setting the current node be the next node
@@ -361,11 +361,11 @@ void Singly::LinkedList<type>::Delete_position(const int position)
     }
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Delete_all()
+template <typename ltype>
+void Singly::LinkedList<ltype>::Delete_all()
 {
     // Initializing a current node and a previous node
-    Singly::Node<type> *current_node, *previous_node;
+    Singly::Node<ltype> *current_node, *previous_node;
 
     // Checking if the list is empty
     if (this->head == NULL)
@@ -384,12 +384,12 @@ void Singly::LinkedList<type>::Delete_all()
     this->head = NULL; // Setting the head point to NULL
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Delete_part(int start, int end)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Delete_part(int start, int end)
 {
     // Initializing a current node, a previous node, a start_node and an end node
-    Singly::Node<type> *current_node = this->head, *previous_node;
-    Singly::Node<type> *start_node, *end_node;
+    Singly::Node<ltype> *current_node = this->head, *previous_node;
+    Singly::Node<ltype> *start_node, *end_node;
 
     if (end == END)
         end = this->size - 1;
@@ -406,7 +406,7 @@ void Singly::LinkedList<type>::Delete_part(int start, int end)
         cout << "You tried to delete a part of the list while the list is empty." << endl;
 
     // Accesing the node at the given start position
-    for (int i = 0; i < start; i++)
+    for (unsigned int i = 0; i < start; i++)
     {
         if (i == start - 1)
             start_node = current_node;           // Setting the start node be the current node
@@ -414,7 +414,7 @@ void Singly::LinkedList<type>::Delete_part(int start, int end)
     }
 
     // Deleting every node until the given end position
-    for (int i = start; i < end; i++)
+    for (unsigned int i = start; i < end; i++)
     {
         if (i == end - 1)
             end_node = current_node->get_next(); // Setting the end node be the next node of the current node
@@ -430,18 +430,18 @@ void Singly::LinkedList<type>::Delete_part(int start, int end)
     this->size = end - start; // Updating the size
 }
 
-template <typename type>
-Singly::Node<type> *Singly::LinkedList<type>::Get_first_node() const
+template <typename ltype>
+Singly::Node<ltype> *Singly::LinkedList<ltype>::Get_first_node() const
 {
     // Return the first node
     return this->head;
 }
 
-template <typename type>
-Singly::Node<type> *Singly::LinkedList<type>::Get_last_node() const
+template <typename ltype>
+Singly::Node<ltype> *Singly::LinkedList<ltype>::Get_last_node() const
 {
     // initializing a current node
-    Singly::Node<type> *current_node = this->head;
+    Singly::Node<ltype> *current_node = this->head;
 
     // Accessing the last node
     while (current_node->get_next() != NULL)
@@ -451,11 +451,11 @@ Singly::Node<type> *Singly::LinkedList<type>::Get_last_node() const
     return current_node;
 }
 
-template <typename type>
-Singly::Node<type> *Singly::LinkedList<type>::Get_node_at(const int index) const
+template <typename ltype>
+Singly::Node<ltype> *Singly::LinkedList<ltype>::Get_node_at(const unsigned int index) const
 {
     // Initializing a current node
-    Singly::Node<type> *current_node = this->head;
+    Singly::Node<ltype> *current_node = this->head;
 
     // Checking if the index is not valid
     if (index < 0 || index > this->size)
@@ -465,18 +465,18 @@ Singly::Node<type> *Singly::LinkedList<type>::Get_node_at(const int index) const
     }
 
     // Accessing node at the given position
-    for (int i = 0; i < index; i++)
+    for (unsigned int i = 0; i < index; i++)
         current_node = current_node->get_next(); // Setting the current node be the next node
 
     // Return the current node
     return current_node;
 }
 
-template <typename type>
-Singly::Node<type> *Singly::LinkedList<type>::Get_node_by_data(const type data) const
+template <typename ltype>
+Singly::Node<ltype> *Singly::LinkedList<ltype>::Get_node_by_data(const ltype data) const
 {
     // Initializing a current node
-    Singly::Node<type> *current_node = this->head;
+    Singly::Node<ltype> *current_node = this->head;
 
     // Searching for the given data
     while (current_node != NULL)
@@ -488,11 +488,11 @@ Singly::Node<type> *Singly::LinkedList<type>::Get_node_by_data(const type data) 
     return NULL;
 }
 
-template <typename type>
-type Singly::LinkedList<type>::Extract_start()
+template <typename ltype>
+ltype Singly::LinkedList<ltype>::Extract_start()
 {
     // Initializing a data variable that keeps the data of the first node
-    type data = this->head->get_data();
+    ltype data = this->head->get_data();
 
     // Deleting the first node
     this->Delete_start();
@@ -501,11 +501,11 @@ type Singly::LinkedList<type>::Extract_start()
     return data;
 }
 
-template <typename type>
-type Singly::LinkedList<type>::Extract_end()
+template <typename ltype>
+ltype Singly::LinkedList<ltype>::Extract_end()
 {
     // Initializing a data variable that keeps the data of the last node
-    type data = this->Get_last_node()->get_data();
+    ltype data = this->Get_last_node()->get_data();
 
     // Deleting the last node
     this->Delete_end();
@@ -514,8 +514,8 @@ type Singly::LinkedList<type>::Extract_end()
     return data;
 }
 
-template <typename type>
-type Singly::LinkedList<type>::Extract_position(const int index)
+template <typename ltype>
+ltype Singly::LinkedList<ltype>::Extract_position(const unsigned int index)
 {
     // Checking if the given index is not valid
     if (index < 0 || index > this->size)
@@ -525,7 +525,7 @@ type Singly::LinkedList<type>::Extract_position(const int index)
     }
 
     // Initializing a data variable that keeps the data of the node at the given position
-    type data = this->Get_node_at(index)->get_data();
+    ltype data = this->Get_node_at(index)->get_data();
 
     // Deleting the given node
     this->Delete_position(index);
@@ -534,17 +534,17 @@ type Singly::LinkedList<type>::Extract_position(const int index)
     return data;
 }
 
-template <typename type>
-Singly::LinkedList<type> Singly::LinkedList<type>::Extract_from(int start, int end)
+template <typename ltype>
+Singly::LinkedList<ltype> Singly::LinkedList<ltype>::Extract_from(int start, int end)
 {
     // Initializing a new linked list as the result of the function
-    Singly::LinkedList<type> result_list;
+    Singly::LinkedList<ltype> result_list;
 
     // Initializing a variable that keeps the the data of the nodes
-    type data;
+    ltype data;
 
     // Accessing all the nodes from the given start position up to the given end position
-    for (int i = start; i <= end; i++)
+    for (unsigned int i = start; i <= end; i++)
     {
         data = this->Get_node_at(i)->get_data();
         result_list.Insert_at_end(data); // Creating the result list
@@ -556,42 +556,42 @@ Singly::LinkedList<type> Singly::LinkedList<type>::Extract_from(int start, int e
     return result_list;
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Replace_start(const type data)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Replace_start(const ltype data)
 {
     // Changing the data of the first node
     this->head->set_data(data);
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Replace_end(const type data)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Replace_end(const ltype data)
 {
     // Initializing a last node as the last node of the list
-    Singly::Node<type> *last_node = this->Get_last_node();
+    Singly::Node<ltype> *last_node = this->Get_last_node();
 
     // Changing the data of the last node
     last_node->set_data(data);
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Replace_position(const type data, const int index)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Replace_position(const ltype data, const unsigned int index)
 {
     // Initializing a current node as the node at the given position
-    Singly::Node<type> *current_node = this->Get_node_at(index);
+    Singly::Node<ltype> *current_node = this->Get_node_at(index);
 
     // Changing the data of the current node
     current_node->set_data(data);
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Sort()
+template <typename ltype>
+void Singly::LinkedList<ltype>::Sort()
 {
     // Initializing a left node and a right node
-    Singly::Node<type> *left_node, *right_node;
-    type temp;
+    Singly::Node<ltype> *left_node, *right_node;
+    ltype temp;
 
     // Bubble Sort Algorithm for Linke List
-    for (int i = 0; i < this->size; i++)
+    for (unsigned int i = 0; i < this->size; i++)
         for (int j = 0; j < this->size - i - 1; j++)
         {
             left_node = this->Get_node_at(j);
@@ -605,11 +605,11 @@ void Singly::LinkedList<type>::Sort()
         }
 }
 
-template <typename type>
-Singly::LinkedList<type> Singly::LinkedList<type>::Sorted()
+template <typename ltype>
+Singly::LinkedList<ltype> Singly::LinkedList<ltype>::Sorted()
 {
     // Initializing a linked list
-    Singly::LinkedList<type> result_list = this->Copy();
+    Singly::LinkedList<ltype> result_list = this->Copy();
 
     // Sort the list
     result_list.Sort();
@@ -617,14 +617,14 @@ Singly::LinkedList<type> Singly::LinkedList<type>::Sorted()
     return result_list;
 }
 
-template <typename type>
-Singly::LinkedList<type> Singly::LinkedList<type>::Copy() const
+template <typename ltype>
+Singly::LinkedList<ltype> Singly::LinkedList<ltype>::Copy() const
 {
     // Initializing a new linked list
-    Singly::LinkedList<type> new_linked_list;
+    Singly::LinkedList<ltype> new_linked_list;
 
     // Initializing a current node
-    Singly::Node<type> *current_node = this->head;
+    Singly::Node<ltype> *current_node = this->head;
 
     // Copying every node of the list to the new list
     while (current_node != NULL)
@@ -636,14 +636,14 @@ Singly::LinkedList<type> Singly::LinkedList<type>::Copy() const
     return new_linked_list;
 }
 
-template <typename type>
-type Singly::LinkedList<type>::Min()
+template <typename ltype>
+ltype Singly::LinkedList<ltype>::Min()
 {
     // Initializing a data variable that keeps the minimum element
-    type min_data;
+    ltype min_data;
 
     // Initializing a current node
-    Singly::Node<type> *current_node = this->head;
+    Singly::Node<ltype> *current_node = this->head;
     min_data = current_node->get_data();
 
     // Searching for the minimum element
@@ -656,14 +656,14 @@ type Singly::LinkedList<type>::Min()
     return min_data;
 }
 
-template <typename type>
-type Singly::LinkedList<type>::Max()
+template <typename ltype>
+ltype Singly::LinkedList<ltype>::Max()
 {
     // Initializing a data variable that keeps the maximum element
-    type max_data;
+    ltype max_data;
 
     // Initializing a current node
-    Singly::Node<type> *current_node = this->head;
+    Singly::Node<ltype> *current_node = this->head;
     max_data = current_node->get_data();
 
     // Searching for the maximum element
@@ -676,26 +676,26 @@ type Singly::LinkedList<type>::Max()
     return max_data;
 }
 
-template <typename type>
-int Singly::LinkedList<type>::Length() const
+template <typename ltype>
+int Singly::LinkedList<ltype>::Length() const
 {
     return this->size;
 }
 
-template <typename type>
-bool Singly::LinkedList<type>::Is_empty()
+template <typename ltype>
+bool Singly::LinkedList<ltype>::Is_empty()
 {
     return this->size == 0;
 }
 
-template <typename type>
-int Singly::LinkedList<type>::Count(const type data)
+template <typename ltype>
+int Singly::LinkedList<ltype>::Count(const ltype data)
 {
     // Initializing a variable that keeps how many times the given data exists in the list
     int times = 0;
 
     // Initializing a current node
-    Singly::Node<type> *current_node = this->head;
+    Singly::Node<ltype> *current_node = this->head;
 
     // Searching for the given data
     while (current_node != NULL)
@@ -707,14 +707,14 @@ int Singly::LinkedList<type>::Count(const type data)
     return times;
 }
 
-template <typename type>
-int Singly::LinkedList<type>::Index_of(const type data)
+template <typename ltype>
+int Singly::LinkedList<ltype>::Index_of(const ltype data)
 {
     // Initializing a current node
-    Singly::Node<type> *current_node = this->head;
+    Singly::Node<ltype> *current_node = this->head;
 
     // Searching for the given data
-    for (int i = 0; i < this->size; i++)
+    for (unsigned int i = 0; i < this->size; i++)
     {
         if (current_node->get_data() == data)
             return i;
@@ -723,11 +723,11 @@ int Singly::LinkedList<type>::Index_of(const type data)
     return -1;
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Clear()
+template <typename ltype>
+void Singly::LinkedList<ltype>::Clear()
 {
     // Initializing a current node and a previous node
-    Singly::Node<type> *current_node, *previous_node;
+    Singly::Node<ltype> *current_node, *previous_node;
 
     // Deleting every node
     current_node = this->head;  // Setting the current node be the first node
@@ -742,20 +742,20 @@ void Singly::LinkedList<type>::Clear()
     this->head = NULL; // Setting the head point to NULL
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Extend_start(const Singly::LinkedList<type> &other_list)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Extend_start(const Singly::LinkedList<ltype> &other_list)
 {
     // Initializing a variable that keeps the data of the nodes
-    type data;
+    ltype data;
 
     // Checking if the list is the same
     if (other_list.Get_first_node() == this->Get_first_node())
     {
         // Create a new list
-        Singly::LinkedList<type> new_list = other_list.Copy();
+        Singly::LinkedList<ltype> new_list = other_list.Copy();
 
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = other_list.Length() - 1; i >= 0; i--)
+        for (unsigned int i = other_list.Length() - 1; i >= 0; i--)
         {
             // Getting all the data from the other list starting from the end
             data = new_list.Get_node_at(i)->get_data();
@@ -767,7 +767,7 @@ void Singly::LinkedList<type>::Extend_start(const Singly::LinkedList<type> &othe
     else
     {
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = other_list.Length() - 1; i >= 0; i--)
+        for (unsigned int i = other_list.Length() - 1; i >= 0; i--)
         {
             // Getting all the data from the other list starting from the end
             data = other_list.Get_node_at(i)->get_data();
@@ -778,20 +778,20 @@ void Singly::LinkedList<type>::Extend_start(const Singly::LinkedList<type> &othe
     }
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Extend_end(const Singly::LinkedList<type> &other_list)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Extend_end(const Singly::LinkedList<ltype> &other_list)
 {
     // Initializing a variable that keeps the data of the nodes
-    type data;
+    ltype data;
 
     // Checking if the list is the same
     if (other_list.Get_first_node() == this->Get_first_node())
     {
         // Create a new list
-        Singly::LinkedList<type> new_list = other_list.Copy();
+        Singly::LinkedList<ltype> new_list = other_list.Copy();
 
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = 0; i < new_list.Length(); i++)
+        for (unsigned int i = 0; i < new_list.Length(); i++)
         {
             // Getting all the data from the other list starting from the end
             data = new_list.Get_node_at(i)->get_data();
@@ -803,7 +803,7 @@ void Singly::LinkedList<type>::Extend_end(const Singly::LinkedList<type> &other_
     else
     {
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = 0; i < other_list.Length(); i++)
+        for (unsigned int i = 0; i < other_list.Length(); i++)
         {
             // Getting all the data from the other list starting from the end
             data = other_list.Get_node_at(i)->get_data();
@@ -814,20 +814,20 @@ void Singly::LinkedList<type>::Extend_end(const Singly::LinkedList<type> &other_
     }
 }
 
-template <typename type>
-void Singly::LinkedList<type>::Extend_at(const Singly::LinkedList<type> &other_list, int position)
+template <typename ltype>
+void Singly::LinkedList<ltype>::Extend_at(const Singly::LinkedList<ltype> &other_list, const unsigned int position)
 {
     // Initializing a variable that keeps the data of the nodes
-    type data;
+    ltype data;
 
     // Checking if the list is the same
     if (other_list.Get_first_node() == this->Get_first_node())
     {
         // Create a new list
-        Singly::LinkedList<type> new_list = other_list.Copy();
+        Singly::LinkedList<ltype> new_list = other_list.Copy();
 
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = other_list.Length() - 1; i >= 0; i--)
+        for (unsigned int i = other_list.Length() - 1; i >= 0; i--)
         {
             // Getting all the data from the other list starting from the end
             data = new_list.Get_node_at(i)->get_data();
@@ -839,7 +839,7 @@ void Singly::LinkedList<type>::Extend_at(const Singly::LinkedList<type> &other_l
     else
     {
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = other_list.Length() - 1; i >= 0; i--)
+        for (unsigned int i = other_list.Length() - 1; i >= 0; i--)
         {
             // Getting all the data from the other list starting from the end
             data = other_list.Get_node_at(i)->get_data();
@@ -850,11 +850,11 @@ void Singly::LinkedList<type>::Extend_at(const Singly::LinkedList<type> &other_l
     }
 }
 
-template <typename type>
-void Singly::LinkedList<type>::operator=(Singly::LinkedList<type> &other_list)
+template <typename ltype>
+void Singly::LinkedList<ltype>::operator=(Singly::LinkedList<ltype> &other_list)
 {
     // Initializing a current node as the fist node of the other list
-    Singly::Node<type> *current_node = other_list.Get_first_node();
+    Singly::Node<ltype> *current_node = other_list.Get_first_node();
 
     // Delete the main list
     this->Clear();
@@ -867,8 +867,8 @@ void Singly::LinkedList<type>::operator=(Singly::LinkedList<type> &other_list)
     }
 }
 
-template <typename type>
-type &Singly::LinkedList<type>::operator[](int index)
+template <typename ltype>
+ltype &Singly::LinkedList<ltype>::operator[](int index)
 {
     // Checking if the index is not valid
     if (index < 0 || index >= this->size)
@@ -879,11 +879,11 @@ type &Singly::LinkedList<type>::operator[](int index)
     return this->Get_node_at(index)->get_data();
 }
 
-template <typename type>
-bool Singly::LinkedList<type>::Contains(const type data)
+template <typename ltype>
+bool Singly::LinkedList<ltype>::Contains(const ltype data)
 {
     // Initializing a current node
-    Singly::Node<type> *current_node = this->head;
+    Singly::Node<ltype> *current_node = this->head;
 
     // Searching for the given data
     while (current_node != NULL)
@@ -896,8 +896,8 @@ bool Singly::LinkedList<type>::Contains(const type data)
 }
 
 /* DOUBLY LINKED LIST METHODS */
-template <typename type>
-Doubly::LinkedList<type>::LinkedList()
+template <typename ltype>
+Doubly::LinkedList<ltype>::LinkedList()
 {
     // Initializing the linked list
     this->head = NULL;
@@ -905,11 +905,11 @@ Doubly::LinkedList<type>::LinkedList()
     this->size = 0;
 }
 
-template <typename type>
-Doubly::LinkedList<type>::LinkedList(const Doubly::LinkedList<type> &other)
+template <typename ltype>
+Doubly::LinkedList<ltype>::LinkedList(const Doubly::LinkedList<ltype> &other)
 {
     // Initializing a current node as the first node of the other list
-    Doubly::Node<type> *current_node = other.Get_first_node();
+    Doubly::Node<ltype> *current_node = other.Get_first_node();
 
     this->head = NULL; // Setting the head point to NULL
     while (current_node != NULL)
@@ -919,11 +919,11 @@ Doubly::LinkedList<type>::LinkedList(const Doubly::LinkedList<type> &other)
     }
 }
 
-template <typename type>
-Doubly::LinkedList<type>::~LinkedList()
+template <typename ltype>
+Doubly::LinkedList<ltype>::~LinkedList()
 {
     // Initializing a current node
-    Doubly::Node<type> *current_node;
+    Doubly::Node<ltype> *current_node;
 
     // Deleting every node in the linked list
     while (this->head != NULL)
@@ -954,12 +954,12 @@ ostream &operator<<(ostream &left, const Doubly::LinkedList<item> &right)
     return left;
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Insert_at_start(type data)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Insert_at_start(ltype data)
 {
 
     // Initializing a new node
-    Doubly::Node<type> *new_node = new Doubly::Node<type>;
+    Doubly::Node<ltype> *new_node = new Doubly::Node<ltype>;
 
     // Checking if memory allocation worked successfully
     if (!new_node)
@@ -984,11 +984,11 @@ void Doubly::LinkedList<type>::Insert_at_start(type data)
     this->size++; // Updating the size
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Insert_at_end(type data)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Insert_at_end(ltype data)
 {
     // Initializing a new node and a current node
-    Doubly::Node<type> *new_node = new Doubly::Node<type>, *current_node = this->head;
+    Doubly::Node<ltype> *new_node = new Doubly::Node<ltype>, *current_node = this->head;
 
     // Checking if memory allocation worked successfully
     if (!new_node)
@@ -1014,11 +1014,11 @@ void Doubly::LinkedList<type>::Insert_at_end(type data)
     this->size++; // Updating the size
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Insert_at_position(type data, const int position)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Insert_at_position(ltype data, const unsigned int position)
 {
     // Initializing a new node and a current node
-    Doubly::Node<type> *new_node = new Doubly::Node<type>, *current_node = this->head;
+    Doubly::Node<ltype> *new_node = new Doubly::Node<ltype>, *current_node = this->head;
 
     // Checking if memory allocation worked successfully
     new_node->set(data, NULL, NULL);
@@ -1035,7 +1035,7 @@ void Doubly::LinkedList<type>::Insert_at_position(type data, const int position)
         this->Insert_at_end(data); // Inserting at the end
 
     // Accessing the given position of the list
-    for (int i = 0; i < position - 1; i++)
+    for (unsigned int i = 0; i < position - 1; i++)
         current_node = current_node->get_next();
 
     new_node->set_next(current_node->get_next()); // Setting the new node point to the next node
@@ -1045,8 +1045,8 @@ void Doubly::LinkedList<type>::Insert_at_position(type data, const int position)
     this->size++;                                 // Updating the size
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Insert(type data, const int index)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Insert(ltype data, const unsigned int index)
 {
     switch (index)
     {
@@ -1062,11 +1062,11 @@ void Doubly::LinkedList<type>::Insert(type data, const int index)
     }
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Delete_start()
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Delete_start()
 {
     // Initializing a current node
-    Doubly::Node<type> *current_node = this->head; // The current node is the first node of the list
+    Doubly::Node<ltype> *current_node = this->head; // The current node is the first node of the list
 
     // Checking if the list is empty
     if (this->head == NULL)
@@ -1079,11 +1079,11 @@ void Doubly::LinkedList<type>::Delete_start()
     this->size--;                        // Updating the size
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Delete_end()
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Delete_end()
 {
     // initializing a current node and a previous node
-    Doubly::Node<type> *current_node, *previous_node;
+    Doubly::Node<ltype> *current_node, *previous_node;
 
     // Checking if the list is empty
     if (this->head == NULL)
@@ -1120,11 +1120,11 @@ void Doubly::LinkedList<type>::Delete_end()
     this->size--; // Updating the size
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Delete_position(int position)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Delete_position(int position)
 {
     // initializing a current node and a previous node
-    Doubly::Node<type> *current_node = this->head, *previous_node;
+    Doubly::Node<ltype> *current_node = this->head, *previous_node;
 
     // Checking if the list is empty
     if (this->head == NULL)
@@ -1144,7 +1144,7 @@ void Doubly::LinkedList<type>::Delete_position(int position)
         this->Delete_end(); // Delete the end
     else
     {
-        for (int i = 0; i < position; i++)
+        for (unsigned int i = 0; i < position; i++)
         {
             previous_node = current_node;            // Setting the previous node be the current node
             current_node = current_node->get_next(); // Setting the current node be the next node
@@ -1158,11 +1158,11 @@ void Doubly::LinkedList<type>::Delete_position(int position)
     }
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Delete_all()
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Delete_all()
 {
     // Initializing a current node and a previous node
-    Doubly::Node<type> *current_node, *previous_node;
+    Doubly::Node<ltype> *current_node, *previous_node;
 
     // Checking if the list is empty
     if (this->head == NULL)
@@ -1182,12 +1182,12 @@ void Doubly::LinkedList<type>::Delete_all()
     this->tail = NULL; // Setting the tail point to NULL
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Delete_part(int start, int end)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Delete_part(int start, int end)
 {
     // Initializing a current node, a previous node, a start_node and an end node
-    Doubly::Node<type> *current_node = this->head, *previous_node;
-    Doubly::Node<type> *start_node, *end_node;
+    Doubly::Node<ltype> *current_node = this->head, *previous_node;
+    Doubly::Node<ltype> *start_node, *end_node;
 
     if (end == END)
         end = this->size - 1;
@@ -1204,7 +1204,7 @@ void Doubly::LinkedList<type>::Delete_part(int start, int end)
         cout << "You tried to delete a part of the list while the list is empty." << endl;
 
     // Accesing the node at the given start position
-    for (int i = 0; i < start; i++)
+    for (unsigned int i = 0; i < start; i++)
     {
         if (i == start - 1)
             start_node = current_node;           // Setting the start node be the current node
@@ -1212,7 +1212,7 @@ void Doubly::LinkedList<type>::Delete_part(int start, int end)
     }
 
     // Deleting every node until the given end position
-    for (int i = start; i < end; i++)
+    for (unsigned int i = start; i < end; i++)
     {
         if (i == end - 1)
             end_node = current_node->get_next(); // Setting the end node be the next node of the current node
@@ -1240,25 +1240,25 @@ void Doubly::LinkedList<type>::Delete_part(int start, int end)
     this->size = end - start; // Updating the size
 }
 
-template <typename type>
-Doubly::Node<type> *Doubly::LinkedList<type>::Get_first_node() const
+template <typename ltype>
+Doubly::Node<ltype> *Doubly::LinkedList<ltype>::Get_first_node() const
 {
     // Return the first node
     return this->head;
 }
 
-template <typename type>
-Doubly::Node<type> *Doubly::LinkedList<type>::Get_last_node() const
+template <typename ltype>
+Doubly::Node<ltype> *Doubly::LinkedList<ltype>::Get_last_node() const
 {
     // Return the last node
     return this->tail;
 }
 
-template <typename type>
-Doubly::Node<type> *Doubly::LinkedList<type>::Get_node_at(const int index) const
+template <typename ltype>
+Doubly::Node<ltype> *Doubly::LinkedList<ltype>::Get_node_at(const unsigned int index) const
 {
     // Initializing a current node
-    Doubly::Node<type> *current_node = this->head;
+    Doubly::Node<ltype> *current_node = this->head;
 
     // Checking if the index is not valid
     if (index < 0 || index > this->size)
@@ -1268,18 +1268,18 @@ Doubly::Node<type> *Doubly::LinkedList<type>::Get_node_at(const int index) const
     }
 
     // Accessing node at the given position
-    for (int i = 0; i < index; i++)
+    for (unsigned int i = 0; i < index; i++)
         current_node = current_node->get_next(); // Setting the current node be the next node
 
     // Return the current node
     return current_node;
 }
 
-template <typename type>
-Doubly::Node<type> *Doubly::LinkedList<type>::Get_node_by_data(const type data) const
+template <typename ltype>
+Doubly::Node<ltype> *Doubly::LinkedList<ltype>::Get_node_by_data(const ltype data) const
 {
     // Initializing a current node
-    Doubly::Node<type> *current_node = this->head;
+    Doubly::Node<ltype> *current_node = this->head;
 
     // Searching for the given data
     while (current_node != NULL)
@@ -1291,11 +1291,11 @@ Doubly::Node<type> *Doubly::LinkedList<type>::Get_node_by_data(const type data) 
     return NULL;
 }
 
-template <typename type>
-type Doubly::LinkedList<type>::Extract_start()
+template <typename ltype>
+ltype Doubly::LinkedList<ltype>::Extract_start()
 {
     // Initializing a data variable that keeps the data of the first node
-    type data = this->head->get_data();
+    ltype data = this->head->get_data();
 
     // Deleting the first node
     this->Delete_start();
@@ -1304,11 +1304,11 @@ type Doubly::LinkedList<type>::Extract_start()
     return data;
 }
 
-template <typename type>
-type Doubly::LinkedList<type>::Extract_end()
+template <typename ltype>
+ltype Doubly::LinkedList<ltype>::Extract_end()
 {
     // Initializing a data variable that keeps the data of the last node
-    type data = this->Get_last_node()->get_data();
+    ltype data = this->Get_last_node()->get_data();
 
     // Deleting the last node
     this->Delete_end();
@@ -1317,8 +1317,8 @@ type Doubly::LinkedList<type>::Extract_end()
     return data;
 }
 
-template <typename type>
-type Doubly::LinkedList<type>::Extract_position(const int index)
+template <typename ltype>
+ltype Doubly::LinkedList<ltype>::Extract_position(const unsigned int index)
 {
     // Checking if the given index is not valid
     if (index < 0 || index > this->size)
@@ -1328,7 +1328,7 @@ type Doubly::LinkedList<type>::Extract_position(const int index)
     }
 
     // Initializing a data variable that keeps the data of the node at the given position
-    type data = this->Get_node_at(index)->get_data();
+    ltype data = this->Get_node_at(index)->get_data();
 
     // Deleting the given node
     this->Delete_position(index);
@@ -1337,17 +1337,17 @@ type Doubly::LinkedList<type>::Extract_position(const int index)
     return data;
 }
 
-template <typename type>
-Doubly::LinkedList<type> Doubly::LinkedList<type>::Extract_from(int start, int end)
+template <typename ltype>
+Doubly::LinkedList<ltype> Doubly::LinkedList<ltype>::Extract_from(int start, int end)
 {
     // Initializing a new linked list as the result of the function
-    Doubly::LinkedList<type> result_list;
+    Doubly::LinkedList<ltype> result_list;
 
     // Initializing a variable that keeps the the data of the nodes
-    type data;
+    ltype data;
 
     // Accessing all the nodes from the given start position up to the given end position
-    for (int i = start; i <= end; i++)
+    for (unsigned int i = start; i <= end; i++)
     {
         data = this->Get_node_at(i)->get_data();
         result_list.Insert_at_end(data); // Creating the result list
@@ -1359,42 +1359,42 @@ Doubly::LinkedList<type> Doubly::LinkedList<type>::Extract_from(int start, int e
     return result_list;
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Replace_start(const type data)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Replace_start(const ltype data)
 {
     // Changing the data of the first node
     this->head->set_data(data);
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Replace_end(const type data)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Replace_end(const ltype data)
 {
     // Initializing a last node as the last node of the list
-    Doubly::Node<type> *last_node = this->Get_last_node();
+    Doubly::Node<ltype> *last_node = this->Get_last_node();
 
     // Changing the data of the last node
     last_node->set_data(data);
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Replace_position(const type data, const int index)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Replace_position(const ltype data, const unsigned int index)
 {
     // Initializing a current node as the node at the given position
-    Doubly::Node<type> *current_node = this->Get_node_at(index);
+    Doubly::Node<ltype> *current_node = this->Get_node_at(index);
 
     // Changing the data of the current node
     current_node->set_data(data);
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Sort()
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Sort()
 {
     // Initializing a left node and a right node
-    Doubly::Node<type> *left_node, *right_node;
-    type temp;
+    Doubly::Node<ltype> *left_node, *right_node;
+    ltype temp;
 
     // Bubble Sort Algorithm for Linke List
-    for (int i = 0; i < this->size; i++)
+    for (unsigned int i = 0; i < this->size; i++)
         for (int j = 0; j < this->size - i - 1; j++)
         {
             left_node = this->Get_node_at(j);
@@ -1408,11 +1408,11 @@ void Doubly::LinkedList<type>::Sort()
         }
 }
 
-template <typename type>
-Doubly::LinkedList<type> Doubly::LinkedList<type>::Sorted()
+template <typename ltype>
+Doubly::LinkedList<ltype> Doubly::LinkedList<ltype>::Sorted()
 {
     // Initializing a linked list
-    Doubly::LinkedList<type> result_list = this->Copy();
+    Doubly::LinkedList<ltype> result_list = this->Copy();
 
     // Sort the list
     result_list.Sort();
@@ -1420,14 +1420,14 @@ Doubly::LinkedList<type> Doubly::LinkedList<type>::Sorted()
     return result_list;
 }
 
-template <typename type>
-Doubly::LinkedList<type> Doubly::LinkedList<type>::Copy() const
+template <typename ltype>
+Doubly::LinkedList<ltype> Doubly::LinkedList<ltype>::Copy() const
 {
     // Initializing a new linked list
-    Doubly::LinkedList<type> new_linked_list;
+    Doubly::LinkedList<ltype> new_linked_list;
 
     // Initializing a current node
-    Doubly::Node<type> *current_node = this->head;
+    Doubly::Node<ltype> *current_node = this->head;
 
     // Copying every node of the list to the new list
     while (current_node != NULL)
@@ -1439,14 +1439,14 @@ Doubly::LinkedList<type> Doubly::LinkedList<type>::Copy() const
     return new_linked_list;
 }
 
-template <typename type>
-type Doubly::LinkedList<type>::Min()
+template <typename ltype>
+ltype Doubly::LinkedList<ltype>::Min()
 {
     // Initializing a data variable that keeps the minimum element
-    type min_data;
+    ltype min_data;
 
     // Initializing a current node
-    Doubly::Node<type> *current_node = this->head;
+    Doubly::Node<ltype> *current_node = this->head;
     min_data = current_node->get_data();
 
     // Searching for the minimum element
@@ -1459,14 +1459,14 @@ type Doubly::LinkedList<type>::Min()
     return min_data;
 }
 
-template <typename type>
-type Doubly::LinkedList<type>::Max()
+template <typename ltype>
+ltype Doubly::LinkedList<ltype>::Max()
 {
     // Initializing a data variable that keeps the maximum element
-    type max_data;
+    ltype max_data;
 
     // Initializing a current node
-    Doubly::Node<type> *current_node = this->head;
+    Doubly::Node<ltype> *current_node = this->head;
     max_data = current_node->get_data();
 
     // Searching for the maximum element
@@ -1479,26 +1479,26 @@ type Doubly::LinkedList<type>::Max()
     return max_data;
 }
 
-template <typename type>
-int Doubly::LinkedList<type>::Length() const
+template <typename ltype>
+int Doubly::LinkedList<ltype>::Length() const
 {
     return this->size;
 }
 
-template <typename type>
-bool Doubly::LinkedList<type>::Is_empty()
+template <typename ltype>
+bool Doubly::LinkedList<ltype>::Is_empty()
 {
     return this->size == 0;
 }
 
-template <typename type>
-int Doubly::LinkedList<type>::Count(const type data)
+template <typename ltype>
+int Doubly::LinkedList<ltype>::Count(const ltype data)
 {
     // Initializing a variable that keeps how many times the given data exists in the list
     int times = 0;
 
     // Initializing a current node
-    Doubly::Node<type> *current_node = this->head;
+    Doubly::Node<ltype> *current_node = this->head;
 
     // Searching for the given data
     while (current_node != NULL)
@@ -1510,14 +1510,14 @@ int Doubly::LinkedList<type>::Count(const type data)
     return times;
 }
 
-template <typename type>
-int Doubly::LinkedList<type>::Index_of(const type data)
+template <typename ltype>
+int Doubly::LinkedList<ltype>::Index_of(const ltype data)
 {
     // Initializing a current node
-    Doubly::Node<type> *current_node = this->head;
+    Doubly::Node<ltype> *current_node = this->head;
 
     // Searching for the given data
-    for (int i = 0; i < this->size; i++)
+    for (unsigned int i = 0; i < this->size; i++)
     {
         if (current_node->get_data() == data)
             return i;
@@ -1526,11 +1526,11 @@ int Doubly::LinkedList<type>::Index_of(const type data)
     return -1;
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Clear()
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Clear()
 {
     // Initializing a current node and a previous node
-    Doubly::Node<type> *current_node, *previous_node;
+    Doubly::Node<ltype> *current_node, *previous_node;
 
     // Deleting every node
     current_node = this->head;  // Setting the current node be the first node
@@ -1546,20 +1546,20 @@ void Doubly::LinkedList<type>::Clear()
     this->tail = NULL; // Setting the tail point to NULL
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Extend_start(const Doubly::LinkedList<type> &other_list)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Extend_start(const Doubly::LinkedList<ltype> &other_list)
 {
     // Initializing a variable that keeps the data of the nodes
-    type data;
+    ltype data;
 
     // Checking if the list is the same
     if (other_list.Get_first_node() == this->Get_first_node())
     {
         // Create a new list
-        Doubly::LinkedList<type> new_list = other_list.Copy();
+        Doubly::LinkedList<ltype> new_list = other_list.Copy();
 
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = other_list.Length() - 1; i >= 0; i--)
+        for (unsigned int i = other_list.Length() - 1; i >= 0; i--)
         {
             // Getting all the data from the other list starting from the end
             data = new_list.Get_node_at(i)->get_data();
@@ -1571,7 +1571,7 @@ void Doubly::LinkedList<type>::Extend_start(const Doubly::LinkedList<type> &othe
     else
     {
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = other_list.Length() - 1; i >= 0; i--)
+        for (unsigned int i = other_list.Length() - 1; i >= 0; i--)
         {
             // Getting all the data from the other list starting from the end
             data = other_list.Get_node_at(i)->get_data();
@@ -1582,20 +1582,20 @@ void Doubly::LinkedList<type>::Extend_start(const Doubly::LinkedList<type> &othe
     }
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Extend_end(const Doubly::LinkedList<type> &other_list)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Extend_end(const Doubly::LinkedList<ltype> &other_list)
 {
     // Initializing a variable that keeps the data of the nodes
-    type data;
+    ltype data;
 
     // Checking if the list is the same
     if (other_list.Get_first_node() == this->Get_first_node())
     {
         // Create a new list
-        Doubly::LinkedList<type> new_list = other_list.Copy();
+        Doubly::LinkedList<ltype> new_list = other_list.Copy();
 
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = 0; i < new_list.Length(); i++)
+        for (unsigned int i = 0; i < new_list.Length(); i++)
         {
             // Getting all the data from the other list starting from the end
             data = new_list.Get_node_at(i)->get_data();
@@ -1607,7 +1607,7 @@ void Doubly::LinkedList<type>::Extend_end(const Doubly::LinkedList<type> &other_
     else
     {
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = 0; i < other_list.Length(); i++)
+        for (unsigned int i = 0; i < other_list.Length(); i++)
         {
             // Getting all the data from the other list starting from the end
             data = other_list.Get_node_at(i)->get_data();
@@ -1618,20 +1618,20 @@ void Doubly::LinkedList<type>::Extend_end(const Doubly::LinkedList<type> &other_
     }
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::Extend_at(const Doubly::LinkedList<type> &other_list, const int position)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Extend_at(const Doubly::LinkedList<ltype> &other_list, const unsigned int position)
 {
     // Initializing a variable that keeps the data of the nodes
-    type data;
+    ltype data;
 
     // Checking if the list is the same
     if (other_list.Get_first_node() == this->Get_first_node())
     {
         // Create a new list
-        Doubly::LinkedList<type> new_list = other_list.Copy();
+        Doubly::LinkedList<ltype> new_list = other_list.Copy();
 
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = other_list.Length() - 1; i >= 0; i--)
+        for (unsigned int i = other_list.Length() - 1; i >= 0; i--)
         {
             // Getting all the data from the other list starting from the end
             data = new_list.Get_node_at(i)->get_data();
@@ -1643,7 +1643,7 @@ void Doubly::LinkedList<type>::Extend_at(const Doubly::LinkedList<type> &other_l
     else
     {
         // Creating copies of all the nodes of the other list starting from the end
-        for (int i = other_list.Length() - 1; i >= 0; i--)
+        for (unsigned int i = other_list.Length() - 1; i >= 0; i--)
         {
             // Getting all the data from the other list starting from the end
             data = other_list.Get_node_at(i)->get_data();
@@ -1654,11 +1654,11 @@ void Doubly::LinkedList<type>::Extend_at(const Doubly::LinkedList<type> &other_l
     }
 }
 
-template <typename type>
-void Doubly::LinkedList<type>::operator=(Doubly::LinkedList<type> &other_list)
+template <typename ltype>
+void Doubly::LinkedList<ltype>::operator=(Doubly::LinkedList<ltype> &other_list)
 {
     // Initializing a current node as the fist node of the other list
-    Doubly::Node<type> *current_node = other_list.Get_first_node();
+    Doubly::Node<ltype> *current_node = other_list.Get_first_node();
 
     // Delete the main list
     this->Clear();
@@ -1671,8 +1671,8 @@ void Doubly::LinkedList<type>::operator=(Doubly::LinkedList<type> &other_list)
     }
 }
 
-template <typename type>
-type &Doubly::LinkedList<type>::operator[](int index)
+template <typename ltype>
+ltype &Doubly::LinkedList<ltype>::operator[](int index)
 {
     // Checking if the index is not valid
     if (index < 0 || index >= this->size)
@@ -1683,11 +1683,11 @@ type &Doubly::LinkedList<type>::operator[](int index)
     return this->Get_node_at(index)->get_data();
 }
 
-template <typename type>
-bool Doubly::LinkedList<type>::Contains(const type data)
+template <typename ltype>
+bool Doubly::LinkedList<ltype>::Contains(const ltype data)
 {
     // Initializing a current node
-    Doubly::Node<type> *current_node = this->head;
+    Doubly::Node<ltype> *current_node = this->head;
 
     // Searching for the given data
     while (current_node != NULL)
