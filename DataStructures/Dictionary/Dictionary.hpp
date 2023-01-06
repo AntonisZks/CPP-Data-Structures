@@ -43,19 +43,20 @@ public:
     Dictionary() {}
 
     /* Adding */
-    void add(const KeyType &key, const ValueType &value);
+    void Add(const KeyType &key, const ValueType &value);
 
     /* Removing */
-    void remove(const KeyType key);
+    void Remove(const KeyType &key);
 
     /* Getters */
-    ValueType &getValueOf(const KeyType key);
+    ValueType Get_value_of(const KeyType& key) const;
 
     template <typename KeyItem, typename ValueItem>
     friend ostream& operator<<(ostream &out, const Dictionary<KeyItem, ValueItem>& dictionary);
 
 private:
     Singly::LinkedList<DictionaryNode<KeyType, ValueType>> data;
+    unsigned int size;
 };
 
 #endif /* DICTIONARY_HEADER */

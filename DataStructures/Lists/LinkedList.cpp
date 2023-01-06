@@ -895,6 +895,21 @@ bool Singly::LinkedList<ltype>::Contains(const ltype data)
     return false;
 }
 
+template <typename ltype>
+void Singly::LinkedList<ltype>::Update_size(void)
+{
+    /* Initializing a current_node */
+    Singly::Node<ltype>* current_node = this->head;
+    this->size = 0;
+
+    /* Counting the nodes */
+    while (current_node != NULL)
+    {
+        this->size++;
+        current_node = current_node->get_next();
+    }
+}
+
 /* DOUBLY LINKED LIST METHODS */
 template <typename ltype>
 Doubly::LinkedList<ltype>::LinkedList()
@@ -1697,4 +1712,19 @@ bool Doubly::LinkedList<ltype>::Contains(const ltype data)
         current_node = current_node->get_next();
     }
     return false;
+}
+
+template <typename ltype>
+void Doubly::LinkedList<ltype>::Update_size(void)
+{
+    /* Initializing a current_node */
+    Doubly::Node<ltype>* current_node = this->head;
+    this->size = 0;
+
+    /* Counting the nodes */
+    while (current_node != NULL)
+    {
+        this->size++;
+        current_node = current_node->get_next();
+    }
 }

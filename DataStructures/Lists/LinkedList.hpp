@@ -101,6 +101,7 @@ namespace Singly
         int Index_of(const ltype data);  // Returns the index of the given data
         void Clear();                    // Clears the list
         bool Contains(const ltype data); // Returns true if the list contains the given data
+        void Update_size(void);          // Updates the size of the list
 
         /* Printing Method */
         // template <typename item>
@@ -109,6 +110,8 @@ namespace Singly
         /* Overloading */
         void operator=(Singly::LinkedList<ltype> &other_list); // Overloading operator =
         ltype &operator[](int index);                          // Overloading operator []
+
+        /* Friend Classes */
 
     private:
         int size;          // Size of the list
@@ -207,6 +210,7 @@ namespace Doubly
         int Index_of(const ltype data);  // Returns the index of the given data
         void Clear();                    // Clears the list
         bool Contains(const ltype data); // Returns true if the list contains the given data
+        void Update_size(void);          // Updates the size of the list
 
         /* Printing Method */
         // template <typename item>
@@ -215,6 +219,8 @@ namespace Doubly
         /* Overloading */
         void operator=(Doubly::LinkedList<ltype> &other_list); // Overloading operator =
         ltype &operator[](int index);                          // Overloading operator []
+
+        /* Friend Classes */
 
     private:
         int size;                  // Size of the list
