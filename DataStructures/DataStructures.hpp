@@ -18,5 +18,8 @@
 #include "Graphs/Graph.hpp"
 #include "Graphs/Graph.cpp"
 
+#include "Dictionary/Dictionary.hpp"
+#include "Dictionary/Dictionary.cpp"
+
 
 #endif

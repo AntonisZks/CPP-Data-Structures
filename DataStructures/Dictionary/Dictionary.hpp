@@ -15,23 +15,24 @@ struct DictionaryNode
 {
 public:
     /* Constructors */
-    DictionaryNode(const KeyType& key_, const ValueType& value_): key(key_), value(value_) {}
-    DictionaryNode() {} 
+    DictionaryNode(const KeyType &key_, const ValueType &value_) : key(key_), value(value_) {}
+    DictionaryNode() {}
 
     /* Setters */
-    void setKey(const KeyType& key) { this->key = key; }
-    void setValue(const ValueType& value) { this->value = value }
+    void setKey(const KeyType &key) { this->key = key; }
+    void setValue(const ValueType &value) { this->value = value; }
 
     /* Getters */
     KeyType getKey() const { return this->key; }
     ValueType getValue() const { return this->value; }
 
     /* Printing */
-    void print() const { cout << "[" << this->key << ": " << this->value << "]" << endl; }
+    template <typename KeyItem, typename ValueItem>
+    friend ostream &operator<<(ostream &out, const DictionaryNode<KeyItem, ValueItem> &node);
 
 private:
-    KeyType key;
-    ValueType value;
+    KeyType key;     // Node key
+    ValueType value; // Node value
 };
 
 template <typename KeyType, typename ValueType>
@@ -42,16 +43,19 @@ public:
     Dictionary() {}
 
     /* Adding */
-    void add(const KeyType& key, const ValueType& value);
+    void add(const KeyType &key, const ValueType &value);
 
     /* Removing */
     void remove(const KeyType key);
 
     /* Getters */
-    ValueType& getValueOf(const KeyType key);
+    ValueType &getValueOf(const KeyType key);
+
+    template <typename KeyItem, typename ValueItem>
+    friend ostream& operator<<(ostream &out, const Dictionary<KeyItem, ValueItem>& dictionary);
 
 private:
-    Singly::LinkedList<DictionaryNode<KeyType, ValueType>> sequence;
+    Singly::LinkedList<DictionaryNode<KeyType, ValueType>> data;
 };
 
 #endif /* DICTIONARY_HEADER */

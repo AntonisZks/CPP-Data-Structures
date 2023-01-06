@@ -253,7 +253,7 @@ void Singly::LinkedList<ltype>::Insert_at_position(ltype data, const unsigned in
 }
 
 template <typename ltype>
-void Singly::LinkedList<ltype>::Insert(ltype data, const unsigned int index)
+void Singly::LinkedList<ltype>::Insert(ltype data, const int index)
 {
     switch (index)
     {
@@ -1046,7 +1046,7 @@ void Doubly::LinkedList<ltype>::Insert_at_position(ltype data, const unsigned in
 }
 
 template <typename ltype>
-void Doubly::LinkedList<ltype>::Insert(ltype data, const unsigned int index)
+void Doubly::LinkedList<ltype>::Insert(ltype data, const int index)
 {
     switch (index)
     {

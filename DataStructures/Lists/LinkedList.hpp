@@ -49,7 +49,7 @@ namespace Singly
         LinkedList(const LinkedList<ltype> &other); // Copy constructor
 
         /* Adding Methods */
-        void Insert(ltype data, const unsigned int index = END);          // Adds data to the given position in the linked
+        void Insert(ltype data, const int index = END);                   // Adds data to the given position in the linked
         void Insert_at_start(ltype data);                                 // Adds data to the start of the list
         void Insert_at_end(ltype data);                                   // Adds data to the end of the list
         void Insert_at_position(ltype data, const unsigned int position); // Adds data to the given position
@@ -155,7 +155,7 @@ namespace Doubly
         LinkedList(const LinkedList<ltype> &other); // Copy constructor
 
         /* Adding Methods */
-        void Insert(ltype data, const unsigned int index = END);          // Adds data to the given position in the linked
+        void Insert(ltype data, const int index = END);                   // Adds data to the given position in the linked
         void Insert_at_start(ltype data);                                 // Adds data to the start of the list
         void Insert_at_end(ltype data);                                   // Adds data to the end of the list
         void Insert_at_position(ltype data, const unsigned int position); // Adds data to the given position
