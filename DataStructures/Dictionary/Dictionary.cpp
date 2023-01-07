@@ -59,6 +59,7 @@ ValueType Dictionary<KeyType, ValueType>::Get_value_of(const KeyType &key) const
             return current_node->get_data().getValue();
         current_node = current_node->get_next();
     }
+    cout << "No key found" << endl;
     ValueType obj;
     return obj;
 }
@@ -71,20 +72,67 @@ ostream &operator<<(ostream &out, const DictionaryNode<KeyType, ValueType> &node
     return out;
 }
 
+template <typename KeyType, typename ValueType>
+void Dictionary<KeyType, ValueType>::Clear(void)
+{
+    this->data.Clear();
+}
+
+template <typename KeyType, typename ValueType>
+void Dictionary<KeyType, ValueType>::Create_from_keys(const Singly::LinkedList<KeyType>& keys, const ValueType& value)
+{
+    Singly::Node<KeyType>* current_node = keys.Get_first_node();
+
+    while (current_node != NULL)
+    {
+        this->Add(current_node->get_data(), value);
+        current_node = current_node->get_next();
+    }
+}
+
+/* Overloading operator [] for a Dictionary */
+template <typename KeyType, typename ValueType>
+ValueType Dictionary<KeyType, ValueType>::operator[](const KeyType& key) const
+{
+    return this->Get_value_of(key);
+}
+
+
 /* Overloading operator << for a Dictionary */
 template <typename KeyType, typename ValueType>
 ostream &operator<<(ostream &out, const Dictionary<KeyType, ValueType> &dictionary)
 {
     Singly::Node<DictionaryNode<KeyType, ValueType>> *current_node = dictionary.data.Get_first_node();
-
     out << "{";
+    if (dictionary.smart_printing)
+    {
+        __printing_tabs__++;
+        out << endl;
+    }
+    else
+        __printing_tabs__--;
     while (current_node != NULL)
     {
+        for (int i = 0; i < __printing_tabs__; i++)
+            cout << "    ";
         out << current_node->get_data();
         if (current_node->get_next() != NULL)
+        {
             out << ", ";
+            if (dictionary.smart_printing)
+                out << endl;
+        }
         current_node = current_node->get_next();
     }
+    if (dictionary.smart_printing)
+    {
+        out << endl;
+        __printing_tabs__--;
+    }
+    else
+        __printing_tabs__++;
+    for (int i = 0; i < __printing_tabs__; i++)
+        cout << "    ";
     out << "}";
     return out;
 }
