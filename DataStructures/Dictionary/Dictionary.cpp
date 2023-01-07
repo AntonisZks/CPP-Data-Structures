@@ -76,12 +76,13 @@ template <typename KeyType, typename ValueType>
 void Dictionary<KeyType, ValueType>::Clear(void)
 {
     this->data.Clear();
+    this->size = 0;
 }
 
 template <typename KeyType, typename ValueType>
-void Dictionary<KeyType, ValueType>::Create_from_keys(const Singly::LinkedList<KeyType>& keys, const ValueType& value)
+void Dictionary<KeyType, ValueType>::Create_from_keys(const Singly::LinkedList<KeyType> &keys, const ValueType &value)
 {
-    Singly::Node<KeyType>* current_node = keys.Get_first_node();
+    Singly::Node<KeyType> *current_node = keys.Get_first_node();
 
     while (current_node != NULL)
     {
@@ -90,13 +91,40 @@ void Dictionary<KeyType, ValueType>::Create_from_keys(const Singly::LinkedList<K
     }
 }
 
-/* Overloading operator [] for a Dictionary */
 template <typename KeyType, typename ValueType>
-ValueType Dictionary<KeyType, ValueType>::operator[](const KeyType& key) const
+void Dictionary<KeyType, ValueType>::Set_value_of(const KeyType &key, const ValueType &value)
 {
-    return this->Get_value_of(key);
+    Singly::Node<DictionaryNode<KeyType, ValueType>> *current_node = this->data.Get_first_node();
+
+    while (current_node != NULL)
+    {
+        if (current_node->get_data().getKey() == key)
+            current_node->get_data().setValue(value);
+        current_node = current_node->get_next();
+    }
 }
 
+/* Overloading operator [] for a Dictionary */
+template <typename KeyType, typename ValueType>
+ValueType &Dictionary<KeyType, ValueType>::operator[](const KeyType &key) const
+{
+    Singly::Node<DictionaryNode<KeyType, ValueType>> *current_node = this->data.Get_first_node();
+
+    while (current_node != NULL)
+    {
+        if (current_node->get_data().getKey() == key)
+        {
+            ValueType value = current_node->get_data().getValue();
+            ValueType &return_value = value;
+            return return_value;
+        }
+        current_node = current_node->get_next();
+    }
+    cout << "No key found" << endl;
+    ValueType obj;
+    ValueType &objref = obj;
+    return objref;
+}
 
 /* Overloading operator << for a Dictionary */
 template <typename KeyType, typename ValueType>

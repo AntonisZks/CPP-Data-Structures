@@ -17,8 +17,8 @@ struct DictionaryNode
 {
 public:
     /* Constructors */
-    DictionaryNode(const KeyType &key_, const ValueType &value_) : key(key_), value(value_) { }
     DictionaryNode() {}
+    DictionaryNode(const KeyType &key_, const ValueType &value_) : key(key_), value(value_) { }
 
     /* Setters */
     void setKey(const KeyType &key) { this->key = key; }
@@ -48,11 +48,12 @@ public:
     void Add(const KeyType &key, const ValueType &value);
 
     /* Removing */
-    void Remove(const KeyType &key);
     void Clear(void);
+    void Remove(const KeyType &key);
 
     /* Setters */
-    void set_smart_printing(const bool value) { this->smart_printing = value; }
+    void Set_value_of(const KeyType &key, const ValueType &value);
+    void Set_smart_printing(const bool value) { this->smart_printing = value; }
     void Create_from_keys(const Singly::LinkedList<KeyType> &keys, const ValueType &value);
 
     /* Getters */
@@ -62,7 +63,7 @@ public:
     template <typename KeyItem, typename ValueItem>
     friend ostream& operator<<(ostream &out, const Dictionary<KeyItem, ValueItem>& dictionary);
 
-    ValueType operator[](const KeyType& key) const;
+    ValueType& operator[](const KeyType& key) const;
 
 private:
     Singly::LinkedList<DictionaryNode<KeyType, ValueType>> data;
