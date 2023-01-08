@@ -1,4 +1,4 @@
-/* Filename: "Dictionary.hpp" */
+/* Filename: "Dictionary.cpp" */
 
 /* This file includes all the basic functions
    for a Dictionary Data Structure */

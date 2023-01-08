@@ -21,4 +21,7 @@
 #include "Dictionary/Dictionary.hpp"
 #include "Dictionary/Dictionary.cpp"
 
+#include "Trees/BinaryTree/BinaryTree.hpp"
+#include "Trees/BinaryTree/BinaryTree.cpp"
+
 #endif
