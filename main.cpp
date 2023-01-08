@@ -5,24 +5,17 @@ using namespace std;
 
 int main(void)
 {
-    Singly::LinkedList<string> friends;
+    Dictionary<string, string> info;
 
-    friends.Insert("Tomas");
-    friends.Insert("Stavros");
-    friends.Insert("Thanos");
-
-    Dictionary<string, Singly::LinkedList<string>> info;
-    info.Set_smart_printing(true);
-
-    info.Add("Friends", friends);
+    info.Add("name", "Antonis");
+    info.Add("age", "19");
+    info.Add("gender", "male");
 
     cout << info << endl;
 
-    friends.Sort();
+    Dictionary<string, string> info2 = info;
 
-    info.Add("Friends", friends);
-
-    cout << info << endl;
+    cout << info2 << endl;
 
     return 0;
 }

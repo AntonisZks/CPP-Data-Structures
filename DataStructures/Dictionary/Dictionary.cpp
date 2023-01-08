@@ -92,6 +92,18 @@ void Dictionary<KeyType, ValueType>::Create_from_keys(const Singly::LinkedList<K
 }
 
 template <typename KeyType, typename ValueType>
+void Dictionary<KeyType, ValueType>::Create_from_keys(const Doubly::LinkedList<KeyType> &keys, const ValueType &value)
+{
+    Doubly::Node<KeyType> *current_node = keys.Get_first_node();
+
+    while (current_node != NULL)
+    {
+        this->Add(current_node->get_data(), value);
+        current_node = current_node->get_next();
+    }
+}
+
+template <typename KeyType, typename ValueType>
 void Dictionary<KeyType, ValueType>::Set_value_of(const KeyType &key, const ValueType &value)
 {
     Singly::Node<DictionaryNode<KeyType, ValueType>> *current_node = this->data.Get_first_node();
@@ -100,6 +112,35 @@ void Dictionary<KeyType, ValueType>::Set_value_of(const KeyType &key, const Valu
     {
         if (current_node->get_data().getKey() == key)
             current_node->get_data().setValue(value);
+        current_node = current_node->get_next();
+    }
+}
+
+template <typename KeyType, typename ValueType>
+Dictionary<KeyType, ValueType> Dictionary<KeyType, ValueType>::Copy(void)
+{
+    Dictionary<KeyType, ValueType> new_dict;
+    Singly::Node<DictionaryNode<KeyType, ValueType>>* current_node = this->data.Get_first_node();
+
+    while (current_node != NULL)
+    {
+        new_dict.Add(current_node->get_data().getKey(), current_node->get_data().getValue());
+        current_node = current_node->get_next();
+    }
+    return new_dict;
+}
+
+/* Overloading operator = for a Dictionary */
+template <typename KeyType, typename ValueType>
+void Dictionary<KeyType, ValueType>::operator=(const Dictionary<KeyType, ValueType>& other)
+{
+    Singly::Node<DictionaryNode<KeyType, ValueType>>* current_node = other.data.Get_first_node();
+
+    this->Clear();
+
+    while (current_node != NULL)
+    {
+        this->Add(current_node->get_data().getKey(), current_node->get_data().getValue());
         current_node = current_node->get_next();
     }
 }
