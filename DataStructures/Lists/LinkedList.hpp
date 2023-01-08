@@ -12,6 +12,11 @@ using namespace std;
 #define END -1
 #define START 0
 
+#define sllist Singly::LinkedList
+#define dllist Doubly::LinkedList
+
+#define llist LinkedList
+
 namespace Singly
 {
     template <typename ltype>

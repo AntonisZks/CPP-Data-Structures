@@ -21,5 +21,4 @@
 #include "Dictionary/Dictionary.hpp"
 #include "Dictionary/Dictionary.cpp"
 
-
 #endif

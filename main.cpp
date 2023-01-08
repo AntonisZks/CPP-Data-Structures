@@ -2,20 +2,23 @@
 #include <string>
 #include "DataStructures/DataStructures.hpp"
 using namespace std;
+using namespace Doubly;
 
 int main(void)
 {
-    Dictionary<string, string> info;
+    llist<int> list;
 
-    info.Add("name", "Antonis");
-    info.Add("age", "19");
-    info.Add("gender", "male");
+    for (int i = 0; i < 10; i++)
+        list.Insert(i);
 
-    cout << info << endl;
+    Dictionary<string, llist<int>> dictionary;
 
-    Dictionary<string, string> info2 = info;
+    dictionary.Add("Key1", list);
+    dictionary.Add("Key2", list);
+    dictionary.Add("Key3", list);
+    dictionary.Set_smart_printing(true);
 
-    cout << info2 << endl;
+    cout << dictionary << endl;
 
     return 0;
 }
